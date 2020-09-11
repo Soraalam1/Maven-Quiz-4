@@ -5,30 +5,111 @@ package rocks.zipcode.quiz4.fundamentals;
  */
 public class StringUtils {
     public static Character getMiddleCharacter(String string) {
-        return null;
+        int middle = string.length() / 2;
+        char answer = string.charAt(middle);
+        return answer;
     }
 
     public static String capitalizeMiddleCharacter(String str) {
-        return null;
+        int middle = str.length() / 2;
+        String answer = "";
+        char middleChar = str.charAt(str.length()/2);
+        for (int index = 0; index < str.length(); index++)
+            if (index == str.length() / 2) {
+                answer += String.valueOf(middleChar).toUpperCase();
+            }
+            else{
+                answer += str.charAt(index);
+            }
+        return answer;
     }
 
     public static String lowerCaseMiddleCharacter(String str) {
-        return null;
+        int middle = str.length() / 2;
+        String answer = "";
+        char middleChar = str.charAt(str.length()/2);
+        for (int index = 0; index < str.length(); index++)
+            if (index == str.length() / 2) {
+                answer += String.valueOf(middleChar).toLowerCase();
+            }
+            else{
+                answer += str.charAt(index);
+            }
+        return answer;
     }
 
     public static Boolean isIsogram(String str) {
-        return null;
+        Boolean answer = true;
+        for(int index = 0; index < str.length(); index++)
+            for (int index1 = index + 1; index1 < str.length(); index1++)
+            {
+                if (String.valueOf(str.charAt(index)).contains(String.valueOf(str.charAt(index1))))
+                {
+                    answer = false;
+                }
+            }
+        return answer;
     }
 
     public static Boolean hasDuplicateConsecutiveCharacters(String str) {
-        return null;
+        Boolean answer = false;
+        for(int index = 0; index < str.length(); index++) {
+            if (index < str.length()-1)
+            {
+                if(str.charAt(index) == str.charAt(index + 1))
+                {
+                    answer = true;
+                }
+            }
+        }
+        return answer;
     }
 
     public static String removeConsecutiveDuplicateCharacters(String str) {
-        return null;
+        String answer = "";
+        for(int index = 0; index < str.length(); index++) {
+            if (index < str.length()-1)
+            {
+                if(str.charAt(index) == str.charAt(index + 1))
+                {
+                    index++;
+                }
+                else
+                {
+                    answer += str.charAt(index);
+                }
+            }
+            else
+            {
+                answer += str.charAt(index);
+            }
+        }
+        return answer;
     }
 
+
     public static String invertCasing(String str) {
-        return null;
+        String answer = "";
+        for(int index = 0; index < str.length(); index++)
+        {
+            char currentCharacter = str.charAt(index);
+            if(Character.isUpperCase(currentCharacter))
+            {
+                answer += String.valueOf(currentCharacter).toLowerCase();
+            }
+            else if(Character.isLowerCase(currentCharacter))
+            {
+                answer += String.valueOf(currentCharacter).toUpperCase();
+            }
+            else
+                {
+                answer += currentCharacter;
+                }
+        }
+        return answer;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(invertCasing("ZzZ"));
     }
 }
